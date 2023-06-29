@@ -23,16 +23,16 @@ const getGames = async (): Promise<Game[]> => {
 export default async function Home() {
   const games = await getGames()
   return (
-    <main className=' m-24 rounded-md grid grid-cols-4 gap-12'>
+    <main className=' m-10 rounded-md grid grid-cols-6 gap-12'>
       {games.map((game) => (
         <div className= 'bg-grey1 p-8 font-bold col-span-4 xl:col-span-2  shadow-lg text-white' key={game.id}>
           <h1>{game.name}</h1>
-          <p className='text-white text-sm mb-4'>{game.rating}</p>
+          <p className='text-ylw text-sm mb-4'>{game.rating}</p>
           <div className='aspect-video relative'> 
           <Image 
             src={game.background_image}
             fill
-            className="object-cover rounded-md"
+            className="object-cover  rounded-md"
             alt={game.name}
             />
           </div>
