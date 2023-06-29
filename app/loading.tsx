@@ -9,7 +9,7 @@ export default function Loading(){
 
          <Skeleton className="h-6 w-1/2 bg-gray-200 mb-2"></Skeleton>
          <Skeleton className="h-6 w-1/4 mb-4"></Skeleton>
-         <Skeleton className="rounded-md w-full h-80 bg-gray-40 "> </Skeleton>
+         <Skeleton className="rounded-md w-full h-80 bg-gray-200 "> </Skeleton>
         
           </div>
           ))}

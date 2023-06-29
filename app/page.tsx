@@ -14,7 +14,7 @@ const getGames = async (): Promise<Game[]> => {
   if (!res.ok) {
     throw new Error("failed to fetch")
   }
-  await new Promise((resolve => setTimeout(resolve, 2000)))// delay for promise to resolve for skelton
+  await new Promise((resolve => setTimeout(resolve, 2200)))// delay for promise to resolve for skelton
   const data = await res.json()
   return data.results
 }
@@ -23,11 +23,11 @@ const getGames = async (): Promise<Game[]> => {
 export default async function Home() {
   const games = await getGames()
   return (
-    <main className='m-24 rounded-md grid grid-cols-4 gap-12'>
+    <main className=' m-24 rounded-md grid grid-cols-4 gap-12'>
       {games.map((game) => (
-        <div className= 'bg-grey p-8 col-span-4 md:col-span-2' key={game.id}>
+        <div className= 'bg-grey1 p-8 font-bold col-span-4 xl:col-span-2  shadow-lg text-white' key={game.id}>
           <h1>{game.name}</h1>
-          <p className='font-bold text-sm mb-4'>{game.rating}</p>
+          <p className='text-white text-sm mb-4'>{game.rating}</p>
           <div className='aspect-video relative'> 
           <Image 
             src={game.background_image}
@@ -36,8 +36,6 @@ export default async function Home() {
             alt={game.name}
             />
           </div>
-        
-      
         </div>
         ))}
     </main>
