@@ -8,22 +8,29 @@ type Game = {
   name: string
 }
 const getGames = async (): Promise<Game[]> => {
-  const res = await fetch(
-    `https://api.rawg.io/api/games?key=${process.env.RAWG}`
-  )
-  if (!res.ok) {
-    throw new Error("failed to fetch")
+  try{
+    const res = await fetch(
+      `https://api.rawg.io/api/games?key=${process.env.RAWG}`
+    )
+    if (!res.ok) {
+      throw new Error("failed to fetch")
+    }
+    await new Promise((resolve => setTimeout(resolve, 2200)))// delay for promise to resolve for skelton
+    const data = await res.json()
+    return data.results
   }
-  await new Promise((resolve => setTimeout(resolve, 2200)))// delay for promise to resolve for skelton
-  const data = await res.json()
-  return data.results
-}
+  catch (error) {
+    // Handle the error here
+    console.error("Error fetching games:", error); 
+  }
+};
 
 
 export default async function Home() {
+  try{
   const games = await getGames()
   return (
-    <main className=' m-10 rounded-md grid grid-cols-6 gap-12'>
+    <main className=' m-10 rounded-md grid grid-cols-6   gap-12'>
       {games.map((game) => (
         <div className= 'bg-grey1 p-8 font-bold col-span-4 xl:col-span-2  shadow-lg text-white' key={game.id}>
           <h1>{game.name}</h1>
@@ -40,4 +47,10 @@ export default async function Home() {
         ))}
     </main>
     )
+      }
+      catch (error) {
+        // Handle the error here
+        console.error("Error fetching games:", error); 
+      }
+
   }
