@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { resolve } from 'path';
 
 type Game = {
   id: number
@@ -15,7 +14,6 @@ const getGames = async (): Promise<Game[]> => {
     if (!res.ok) {
       throw new Error("failed to fetch")
     }
-    await new Promise((resolve => setTimeout(resolve, 2000)))// delay for promise to resolve for skelton
     const data = await res.json()
     console.log(data)
     return data.results
