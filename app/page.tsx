@@ -10,7 +10,7 @@ type Game = {
 const getGames = async (): Promise<Game[]> => {
   try{
     const res = await fetch(
-      `https://api.rawg.io/api/games?key=${process.env.RAWG}`
+      `https://api.rawg.io/api/games?key=bd787d3f678b498197b32db136fc919e`
     )
     if (!res.ok) {
       throw new Error("failed to fetch")
